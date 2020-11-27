@@ -9,11 +9,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
+import { MachinecardListviewComponent } from './machinecard-listview/machinecard-listview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    MachinecardListviewComponent
   ],
   imports: [
     BrowserModule,
