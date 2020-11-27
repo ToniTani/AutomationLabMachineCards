@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Cardmodel} from '../cardmodel';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-machinecard-listview',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MachinecardListviewComponent implements OnInit {
 
-  constructor() { }
+  public loadedCards: Cardmodel[] = [];
 
-  ngOnInit(): void {
+  constructor(private http: HttpClient) { }
+
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    this.fetchCards();
   }
 
+  // tslint:disable-next-line:typedef
+  private fetchCards() {
+    this.http
+      .get<{ [key: string]: Cardmodel }>(
+        'https://automation-laboratory-backend.azurewebsites.net/api/device')
+      .pipe(
+        map(responseData => {
+          const cardsArray: Cardmodel[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              cardsArray.push({ ...responseData[key]});
+            }
+          }
+          return cardsArray;
+        })
+      )
+      .subscribe(cards => {
+        this.loadedCards = cards;
+      });
+  }
 }

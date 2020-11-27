@@ -1,1 +1,13 @@
-<p>machinecard-listview works!</p>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let card of loadedCards">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        {{card.workplaceId}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      {{card.deviceCode}}, {{card.versio}}, {{card.name}}
+    </p>
+  </mat-expansion-panel>
+</mat-accordion>
+<br>
