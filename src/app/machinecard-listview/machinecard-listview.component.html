@@ -2,11 +2,43 @@
   <mat-expansion-panel *ngFor="let card of loadedCards">
     <mat-expansion-panel-header>
       <mat-panel-description>
-        {{card.workplaceId}}
+        <p>{{card.workplaceId}}. Name: {{card.name}}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>
-      {{card.deviceCode}}, {{card.versio}}, {{card.name}}
+      ID: {{card.id}}
+      <br>
+      Device code: {{card.deviceCode}}
+      <br>
+      Versio: {{card.versio}}
+      <br>
+      Device name: {{card.deviceName}}
+      <br>
+      Boot up: {{card.bootUp}}
+      <br>
+      Firmware: {{card.firmware}}
+      <br>
+      Mac: {{card.mac}}
+      <br>
+      Profinet IP: {{card.profinetIP}}
+      <br>
+      Subnet: {{card.subnet}}
+      <br>
+      Router IP: {{card.routerIP}}
+      <br>
+      Profibus: {{card.profibus}}
+      <br>
+      Asi: {{card.asi}}
+      <br>
+      Mpi: {{card.mpi}}
+      <br>
+      Counter in: {{card.counterIn}}
+      <br>
+      Counter out: {{card.counterOut}}
+      <br>
+      Is active: {{card.isActive}}
+      <br>
+      Workplace: {{card.workplace}}
     </p>
   </mat-expansion-panel>
 </mat-accordion>
