@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Cardmodel} from '../cardmodel';
 import {map} from 'rxjs/operators';
@@ -10,9 +10,12 @@ import {map} from 'rxjs/operators';
 })
 export class MachinecardListviewComponent implements OnInit {
 
+  headers = ['Key', 'Value'];
+
   public loadedCards: Cardmodel[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
@@ -29,7 +32,7 @@ export class MachinecardListviewComponent implements OnInit {
           const cardsArray: Cardmodel[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
-              cardsArray.push({ ...responseData[key]});
+              cardsArray.push({...responseData[key]});
             }
           }
           return cardsArray;

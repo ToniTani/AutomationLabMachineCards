@@ -4,3 +4,26 @@
   position: relative;
   margin: 0.2% auto auto auto;
 }
+
+.machineCard {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.machineCard td, .machineCard th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.machineCard tr:nth-child(even){background-color: #f2f2f2;}
+
+.machineCard tr:hover {background-color: #ddd;}
+
+.machineCard th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blueviolet;
+  color: white;
+}
