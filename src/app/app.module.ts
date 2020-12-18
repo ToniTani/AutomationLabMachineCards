@@ -11,10 +11,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import { MachinecardListviewComponent } from './machinecard-listview/machinecard-listview.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MachinecardNotInUseListviewComponent } from './machinecard-not-in-use-listview/machinecard-not-in-use-listview/machinecard-not-in-use-listview.component';
 
 const appRoutes: Routes = [
 
-  {path: '', component: MachinecardListviewComponent}
+  {path: 'Machinecards', component: MachinecardListviewComponent},
+  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent}
 
 ];
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    MachinecardListviewComponent
+    MachinecardListviewComponent,
+    MachinecardNotInUseListviewComponent
   ],
   imports: [
     BrowserModule,

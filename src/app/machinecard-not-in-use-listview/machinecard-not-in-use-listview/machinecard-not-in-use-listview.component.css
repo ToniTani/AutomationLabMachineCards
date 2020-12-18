@@ -1,0 +1,29 @@
+.mat-expansion-panel {
+  color: #7705cc;
+  border-radius: 4px;
+  position: relative;
+  margin: 0.2% auto auto auto;
+}
+
+.machineCardNotInUse {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.machineCardNotInUse td, .machineCardNotInUse th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.machineCardNotInUse tr:nth-child(even){background-color: #f2f2f2;}
+
+.machineCardNotInUse tr:hover {background-color: #ddd;}
+
+.machineCardNotInUse th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blueviolet;
+  color: white;
+}

@@ -1,0 +1,162 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let card of loadedCards">
+    <mat-expansion-panel-header>
+      <mat-panel-description>
+        <p>{{card.workplaceId}}. {{card.deviceName}}</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <table class="machineCardNotInUse">
+      <tr>
+        <th *ngFor = "let column of headers">
+          {{column}}
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          ID
+        </td>
+        <td>
+          {{card.id}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Device code
+        </td>
+        <td>
+          {{card.deviceCode}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Versio
+        </td>
+        <td>
+          {{card.versio}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Boot up
+        </td>
+        <td>
+          {{card.bootUp}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Article
+        </td>
+        <td>
+          {{card.article}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Mac
+        </td>
+        <td>
+          {{card.mac}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Profinet IP
+        </td>
+        <td>
+          {{card.profinetIP}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Subnet
+        </td>
+        <td>
+          {{card.subnet}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Router IP
+        </td>
+        <td>
+          {{card.routerIP}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Profibus
+        </td>
+        <td>
+          {{card.profibus}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Asi
+        </td>
+        <td>
+          {{card.asi}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Mpi
+        </td>
+        <td>
+          {{card.mpi}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Counter in
+        </td>
+        <td>
+          {{card.counterIn}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Counter out
+        </td>
+        <td>
+          {{card.counterOut}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Is active
+        </td>
+        <td>
+          {{card.isActive}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Workplace
+        </td>
+        <td>
+          {{card.workplace}}
+        </td>
+      </tr>
+    </table>
+  </mat-expansion-panel>
+</mat-accordion>
+<br>
