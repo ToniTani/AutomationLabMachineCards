@@ -11,6 +11,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import { MachinecardListviewComponent } from './machinecard-listview/machinecard-listview.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MachinecardsComponent } from './machinecards/machinecards.component';
+import { CardListComponent } from './machinecards/card-list/card-list.component';
+import { CardDetailComponent } from './machinecards/card-detail/card-detail.component';
+import { CardItemComponent } from './machinecards/card-list/card-item/card-item.component';
 
 const appRoutes: Routes = [
 
@@ -22,7 +26,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    MachinecardListviewComponent
+    MachinecardListviewComponent,
+    MachinecardsComponent,
+    CardListComponent,
+    CardDetailComponent,
+    CardItemComponent
   ],
   imports: [
     BrowserModule,
