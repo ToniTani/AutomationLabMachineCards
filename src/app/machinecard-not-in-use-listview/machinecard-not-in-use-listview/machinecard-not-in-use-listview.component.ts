@@ -1,32 +1,32 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Cardmodel} from '../../cardmodel';
 import {HttpClient} from '@angular/common/http';
-import {Cardmodel} from '../cardmodel';
 import {map} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-machinecard-listview',
-  templateUrl: './machinecard-listview.component.html',
-  styleUrls: ['./machinecard-listview.component.css']
+  selector: 'app-machinecard-not-in-use-listview',
+  templateUrl: './machinecard-not-in-use-listview.component.html',
+  styleUrls: ['./machinecard-not-in-use-listview.component.css']
 })
-export class MachinecardListviewComponent implements OnInit {
+export class MachinecardNotInUseListviewComponent implements OnInit {
 
   headers = ['Key', 'Value'];
 
   public loadedCards: Cardmodel[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private httpCardsNotInUse: HttpClient) {
   }
 
   // tslint:disable-next-line:typedef
-  ngOnInit() {
-    this.fetchCards();
+  ngOnInit(){
+    this.fetchCardsNotInUse();
   }
 
   // tslint:disable-next-line:typedef
-  private fetchCards() {
-    this.http
+  private fetchCardsNotInUse() {
+    this.httpCardsNotInUse
       .get<{ [key: string]: Cardmodel }>(
-        'https://automation-laboratory-backend.azurewebsites.net/api/device')
+        'https://automation-laboratory-backend.azurewebsites.net/api/device/DeviceActiveFalse')
       .pipe(
         map(responseData => {
           const cardsArray: Cardmodel[] = [];

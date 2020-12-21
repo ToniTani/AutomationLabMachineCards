@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "automation-lab-cards"
+  "defaultProject": "automation-lab-cards",
+  "cli": {
+    "analytics": "a9757288-7294-4b68-bb37-ab582ddebf9b"
+  }
 }
