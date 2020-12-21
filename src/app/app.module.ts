@@ -15,10 +15,13 @@ import { MachinecardsComponent } from './machinecards/machinecards.component';
 import { CardListComponent } from './machinecards/card-list/card-list.component';
 import { CardDetailComponent } from './machinecards/card-detail/card-detail.component';
 import { CardItemComponent } from './machinecards/card-list/card-item/card-item.component';
+import { MachinecardNotInUseListviewComponent } from './machinecard-not-in-use-listview/machinecard-not-in-use-listview/machinecard-not-in-use-listview.component';
+
 
 const appRoutes: Routes = [
 
-  {path: '', component: MachinecardListviewComponent}
+  {path: 'Machinecards', component: MachinecardListviewComponent},
+  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent}
 
 ];
 
@@ -27,10 +30,12 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     MachinecardListviewComponent,
+    MachinecardNotInUseListviewComponent,
     MachinecardsComponent,
     CardListComponent,
     CardDetailComponent,
-    CardItemComponent
+    CardItemComponent,
+    MachinecardNotInUseListviewComponent
   ],
   imports: [
     BrowserModule,
