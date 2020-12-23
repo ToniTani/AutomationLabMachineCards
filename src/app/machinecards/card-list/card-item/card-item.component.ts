@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Cardmodel} from '../../../cardmodel';
 
 @Component({
   selector: 'app-card-item',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardItemComponent implements OnInit {
 
+  @Input() machinecard: Cardmodel;
+  @Output() cardSelected = new EventEmitter<void>();
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void  {
+  }
+
+  onSelected(){
+    this.cardSelected.emit();
   }
 
 }

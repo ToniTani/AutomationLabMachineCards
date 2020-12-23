@@ -3,14 +3,11 @@
     <button class="btn btn-success">New Card</button>
   </div>
 </div>
+<hr>
 <div class="row">
-  <a href="#" class="list-group-item clearfix" *ngFor="let machinecard of machinecards" >
-    <div class="pull-left">
-      <h4 class="list-group-item-heading">{{machinecard.deviceCode}}</h4>
-    </div>
-    <span class="pull-right">
-    <p class="list-group-item-text">{{machinecard.workplaceId}}</p>
-      <p class="list-group-item-text">{{machinecard.deviceCode}}</p>
-    </span>
-    <app-card-item></app-card-item>
+    <app-card-item
+      *ngFor="let machinecardEl of machinecards"
+    [machinecard]="machinecardEl"
+    (cardSelected)="onCardSelected(machinecardEl)">
+    </app-card-item>
 </div>

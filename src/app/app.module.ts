@@ -21,7 +21,8 @@ import { MachinecardNotInUseListviewComponent } from './machinecard-not-in-use-l
 const appRoutes: Routes = [
 
   {path: 'Machinecards', component: MachinecardListviewComponent},
-  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent}
+  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent},
+  {path: 'Kortit', component: MachinecardsComponent}
 
 ];
 

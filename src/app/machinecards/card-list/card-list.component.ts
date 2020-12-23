@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
 
 @Component({
@@ -8,12 +8,19 @@ import {Cardmodel} from '../../cardmodel';
 })
 export class CardListComponent implements OnInit {
 
+  @Output() cardWasSelected = new EventEmitter<Cardmodel>();
   machinecards: Cardmodel[] = [
+    new Cardmodel('', '', '', '', '', '',
+      '', '', '', '', '', '', '', '', '', '')
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCardSelected(cardmodel: Cardmodel){
+  this.cardWasSelected.emit(cardmodel);
   }
 
 }
