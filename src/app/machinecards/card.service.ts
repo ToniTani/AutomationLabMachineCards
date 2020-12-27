@@ -7,7 +7,7 @@ import {Cardmodel} from '../cardmodel';
 })
 export class CardService {
 
-  cardsChanged = new Subject<Cardmodel>();
+  cardsChanged = new Subject<Cardmodel[]>();
 
   private machinecards: Cardmodel[] = [];
 
