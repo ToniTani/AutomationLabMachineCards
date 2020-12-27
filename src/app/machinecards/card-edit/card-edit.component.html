@@ -1,0 +1,16 @@
+<section>
+  <form fxLayout="column" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="standard" color="primary">
+      <label for="kysymys"></label>
+      <input type="text" matInput placeholder="Kirjoita kysymys tähän" id="kysymys" formControlName="name" class="form-control">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="standard" color="primary">
+      <label for="vastaus"></label>
+      <textarea matInput placeholder="Kirjoita vastaus tähän" id="vastaus" class="form-control" formControlName="description" rows="7"></textarea>
+    </mat-form-field>
+    <button type="submit" mat-button color="primary" [disabled]="!cardForm.valid">Tallenna</button>
+    <button type="submit" mat-raised-button color="warn" (click)="onCancel()">Peruuta</button>
+  </form>
+</section>
+<br>
