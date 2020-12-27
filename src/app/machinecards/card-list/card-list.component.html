@@ -1,13 +1,12 @@
-<div class="row">
-  <div class="col-xs-12">
-    <button class="btn btn-success">New Card</button>
-  </div>
-</div>
 <hr>
-<div class="row">
+<button mat-raised-button color="primary" (click)="onNewQuestion()">+ Lisää uusi kortti</button>
+<hr>
+<mat-card fxLayout="column" class="example-card">
+  <mat-card-content fxLayout="column">
     <app-card-item
-      *ngFor="let machinecardEl of machinecards"
-    [machinecard]="machinecardEl"
-    (cardSelected)="onCardSelected(machinecardEl)">
-    </app-card-item>
-</div>
+      *ngFor="let machinecard of machinecards; let i = index"
+      [machinecard]="machinecard"
+      [index]="i"></app-card-item>
+  </mat-card-content>
+</mat-card>
+<br>

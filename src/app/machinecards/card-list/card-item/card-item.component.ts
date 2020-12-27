@@ -9,10 +9,8 @@ import {Cardmodel} from '../../../cardmodel';
 export class CardItemComponent implements OnInit {
 
   @Input() machinecard: Cardmodel;
-  @Output() index: number;
+  @Input() index: number;
 
-  constructor() { }
-
-  ngOnInit(): void  {
+  ngOnInit() {
   }
 }
