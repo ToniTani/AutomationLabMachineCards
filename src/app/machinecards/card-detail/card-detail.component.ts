@@ -24,7 +24,7 @@ export class CardDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.machinecard = this.cardService.getCards(this.id);
+          this.machinecard = this.cardService.getCard(this.id);
         }
     );
   }
