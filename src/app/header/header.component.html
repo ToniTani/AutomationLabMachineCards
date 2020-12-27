@@ -4,18 +4,26 @@
       <button routerLink="Machinecards" mat-button>
         <span><mat-icon>developer_board</mat-icon>Konekortit</span>
       </button>
-
       <button routerLink="DeviceActiveFalse" mat-button>
         <span><mat-icon>developer_board</mat-icon>Ei käytössä olevat konekortit</span>
-      </button>
-
-      <button routerLink="Kortit" mat-button>
-        <span><mat-icon>developer_board</mat-icon>Kortit</span>
       </button>
     </div>
     <div>
       <button mat-flat-button>Login
       </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onLoadData()">
+          <mat-icon>cloud_download</mat-icon>
+          <span>Hae kysymykset</span>
+        </button>
+        <button mat-menu-item (click)="onSaveData()">
+          <mat-icon>save</mat-icon>
+          <span>Tallenna</span>
+        </button>
+      </mat-menu>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

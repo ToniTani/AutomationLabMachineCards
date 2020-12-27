@@ -16,13 +16,24 @@ import { CardListComponent } from './machinecards/card-list/card-list.component'
 import { CardDetailComponent } from './machinecards/card-detail/card-detail.component';
 import { CardItemComponent } from './machinecards/card-list/card-item/card-item.component';
 import { MachinecardNotInUseListviewComponent } from './machinecard-not-in-use-listview/machinecard-not-in-use-listview/machinecard-not-in-use-listview.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import { MachinecardStartComponent } from './machinecards/machinecard-start/machinecard-start.component';
+import { CardEditComponent } from './machinecards/card-edit/card-edit.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 const appRoutes: Routes = [
 
   {path: 'Machinecards', component: MachinecardListviewComponent},
   {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent},
-  {path: 'Kortit', component: MachinecardsComponent}
+  {path: 'kortit', component: MachinecardsComponent, children: [
+      {path: '', component: MachinecardStartComponent},
+      {path: 'new', component: CardEditComponent},
+      {path: ':id', component: CardDetailComponent},
+      {path: 'id/edit', component: CardEditComponent}
+    ]}
 
 ];
 
@@ -36,7 +47,9 @@ const appRoutes: Routes = [
     CardListComponent,
     CardDetailComponent,
     CardItemComponent,
-    MachinecardNotInUseListviewComponent
+    MachinecardNotInUseListviewComponent,
+    MachinecardStartComponent,
+    CardEditComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +61,10 @@ const appRoutes: Routes = [
     MatExpansionModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    MatMenuModule,
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

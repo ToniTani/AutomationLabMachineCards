@@ -1,18 +1,14 @@
+<hr>
 <div class="rov">
   <div class="col-xs-12">
     <h1>{{machinecard.deviceName}}Name</h1>
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group">
-      <button type="button" class="btn btn-primary dropdown-toggle">
-        Manage Card <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Edit Card</a></li>
-        <li><a href="#">Delete Card</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<mat-card class="example-card">
+  <mat-card-content>{{ machinecard.deviceCode }}
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onEditQuestion()">Muokkaa</button>
+    <button mat-button (click)="onDeleteQuestion()">Poista</button>
+  </mat-card-actions>
+</mat-card>

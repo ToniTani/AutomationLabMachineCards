@@ -1,5 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
+import {Subscription} from 'rxjs';
+import {CardService} from '../card.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-card-list',
@@ -8,19 +11,29 @@ import {Cardmodel} from '../../cardmodel';
 })
 export class CardListComponent implements OnInit {
 
-  @Output() cardWasSelected = new EventEmitter<Cardmodel>();
-  machinecards: Cardmodel[] = [
-    new Cardmodel('', '', '', '', '', '',
-      '', '', '', '', '', '', '', '', '', '')
-  ];
+  // @Output() cardWasSelected = new EventEmitter<Cardmodel>();
+  machinecards: Cardmodel[];
+  subscription: Subscription;
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private cardService: CardService,
+              private router: Router,
+              private route: ActivatedRoute) {
+
   }
 
-  onCardSelected(cardmodel: Cardmodel){
-  this.cardWasSelected.emit(cardmodel);
+  ngOnInit() {
+    this.cardService.cardsChanged
+      ._subscribe(
+        (machinecards: Cardmodel[]) => {
+        this.machinecards = machinecards;
+        }
+      );
+    this.machinecards = this.cardService.getCards(); {
+      return this.cardService;
+    }
   }
-
+  onNewQuestion() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }

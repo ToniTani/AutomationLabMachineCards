@@ -1,12 +1,8 @@
 <div class="row">
   <div class="col-md-5">
-    <app-machinecards
-    (cardWasSelected)="selectedCard = $event"></app-machinecards>
+    <app-card-list></app-card-list>
   </div>
   <div class="col-md-7">
-    <app-card-detail
-    ngIf="selectedRecipe; else infoText"
-    [machinecard]="selectedCard"></app-card-detail>
-    <p>Valitse kortti!</p>
+    <router-outlet></router-outlet>
   </div>
 </div>

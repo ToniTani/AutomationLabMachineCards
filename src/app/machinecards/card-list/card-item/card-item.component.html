@@ -1,9 +1,9 @@
-<a href="#" class="list-group-item clearfix" (click)="onSelected">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{machinecard.deviceCode}}</h4>
-  </div>
-  <span class="pull-right">
+<mat-card-actions fxLayout="column" style="cursor: pointer;"
+                  [routerLink]="[index]"
+                  routerLinkActive="active"
+                  class="list-group-item">
+  <mat-card fxLayout="column" class="kys">
     <p class="list-group-item-text">{{machinecard.workplace}}</p>
       <p class="list-group-item-text">{{machinecard.deviceCode}}</p>
-    </span>
-</a>
+  </mat-card>
+</mat-card-actions>

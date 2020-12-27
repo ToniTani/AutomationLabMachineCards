@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
+import {CardService} from '../card.service';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-card-detail',
@@ -8,10 +10,29 @@ import {Cardmodel} from '../../cardmodel';
 })
 export class CardDetailComponent implements OnInit {
 
-  @Input() machinecard: Cardmodel
-  constructor() { }
+ machinecard: Cardmodel;
+ id; number;
 
-  ngOnInit(): void {
+  constructor(private cardService: CardService,
+              private route: ActivatedRoute,
+              private router: Router) {
+
   }
 
+  ngOnInit() {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.machinecard = this.cardService.getCards(this.id);
+        }
+    );
+  }
+  onEditQuestion() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+  }
+  onDeleteQuestion() {
+    this.cardService.deleteCard(this.id);
+    this.router.navigate(['/kortit']);
+  }
 }
