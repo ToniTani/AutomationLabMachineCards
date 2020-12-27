@@ -22,6 +22,7 @@ import { MachinecardStartComponent } from './machinecards/machinecard-start/mach
 import { CardEditComponent } from './machinecards/card-edit/card-edit.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CardService} from './machinecards/card.service';
 
 
 const appRoutes: Routes = [
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
