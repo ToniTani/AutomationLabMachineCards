@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
 import {Subscription} from 'rxjs';
 import {CardService} from '../card.service';
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.css']
 })
-export class CardListComponent implements OnInit {
+export class CardListComponent implements OnInit, OnDestroy {
 
   // @Output() cardWasSelected = new EventEmitter<Cardmodel>();
   machinecards: Cardmodel[];
@@ -24,7 +24,7 @@ export class CardListComponent implements OnInit {
 
   ngOnInit() {
     this.cardService.cardsChanged
-      ._subscribe(
+      .subscribe(
         (machinecards: Cardmodel[]) => {
         this.machinecards = machinecards;
         }
@@ -35,5 +35,8 @@ export class CardListComponent implements OnInit {
   }
   onNewQuestion() {
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
