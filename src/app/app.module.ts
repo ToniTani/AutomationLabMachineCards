@@ -30,15 +30,15 @@ import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
 
-  {path: 'Machinecards', component: MachinecardListviewComponent},
-  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent},
-  {path: 'kortit', component: MachinecardsComponent, children: [
+  {path: '', redirectTo: '/kortit', pathMatch: 'full' },
+  {path: 'kortit', component: MachinecardListviewComponent},
+  {path: 'deviceActiveFalse', component: MachinecardNotInUseListviewComponent},
+  {path: 'machinecards', component: MachinecardsComponent, children: [
       {path: '', component: MachinecardStartComponent},
       {path: 'new', component: CardEditComponent, resolve: [CardResolverService]},
       {path: ':id', component: CardDetailComponent, resolve: [CardResolverService]},
       {path: 'id/edit', component: CardEditComponent}
-    ]}
-
+    ]},
 ];
 
 @NgModule({

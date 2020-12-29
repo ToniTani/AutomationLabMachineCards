@@ -11,8 +11,6 @@ export class CardService {
 
   private machinecards: Cardmodel[] = [];
 
-
-
   setCards(machinecards: Cardmodel[]) {
     this.machinecards = machinecards;
     this.cardsChanged.next(this.machinecards.slice());

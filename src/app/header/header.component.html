@@ -1,11 +1,14 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div>
-      <button routerLink="Machinecards" mat-button>
+      <button routerLink="kortit" mat-button>
         <span><mat-icon>developer_board</mat-icon>Konekortit</span>
       </button>
-      <button routerLink="DeviceActiveFalse" mat-button>
+      <button routerLink="deviceActiveFalse" mat-button>
         <span><mat-icon>developer_board</mat-icon>Ei käytössä olevat konekortit</span>
+      </button>
+      <button routerLink="machinecards" mat-button>
+        <span><mat-icon>developer_board</mat-icon>Muokkaa kortteja</span>
       </button>
     </div>
     <div>
@@ -17,7 +20,7 @@
         <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="onLoadData()">
           <mat-icon>cloud_download</mat-icon>
-          <span>Hae kysymykset</span>
+          <span>Hae kortit</span>
         </button>
         <button mat-menu-item (click)="onSaveData()">
           <mat-icon>save</mat-icon>

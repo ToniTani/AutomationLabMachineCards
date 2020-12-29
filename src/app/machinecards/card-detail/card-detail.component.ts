@@ -33,6 +33,6 @@ export class CardDetailComponent implements OnInit {
   }
   onDeleteQuestion() {
     this.cardService.deleteCard(this.id);
-    this.router.navigate(['/kortit']);
+    this.router.navigate(['/machinecards']);
   }
 }

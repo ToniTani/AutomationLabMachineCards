@@ -28,8 +28,6 @@ export class CardEditComponent implements OnInit {
       );
   }
   onSubmit() {
-    // const newQuestion =  new Question(
-    //   this.questionForm['name'], this.questionForm['description']);
 
     if (this.editMode) {
       this.cardService.updateCard(this.id, this.cardForm.value);
