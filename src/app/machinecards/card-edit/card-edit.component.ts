@@ -42,21 +42,33 @@ export class CardEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
   private initForm() {
-    let questionName = '';
-    let questionDescription = '';
+    let deviceCode = '';
+    let versio = '';
+    let deviceName = '';
+    let bootUp = '';
+    let article = '';
+    let mac = '';
 
 
     if (this.editMode) {
       const machinecard = this.cardService.getCard(this.id);
-      questionName = machinecard.deviceCode;
-      questionDescription = machinecard.deviceName;
+      deviceCode = machinecard.deviceCode;
+      versio = machinecard.versio;
+      deviceName = machinecard.deviceName;
+      bootUp = machinecard.bootUp;
+      article = machinecard.article;
+      mac = machinecard.mac;
     }
 
 
     {
       this.cardForm = new FormGroup({
-        'name': new FormControl(questionName, Validators.required),
-        'description': new FormControl(questionDescription, Validators.required)
+        'deviceCode': new FormControl(deviceCode, Validators.required),
+        'versio': new FormControl(versio, Validators.required),
+        'deviceName': new FormControl(deviceName, Validators.required),
+        'bootUp': new FormControl(bootUp, Validators.required),
+        'article': new FormControl(article, Validators.required),
+        'mac': new FormControl(mac, Validators.required),
       });
     }
   }

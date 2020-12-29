@@ -23,6 +23,9 @@ import { CardEditComponent } from './machinecards/card-edit/card-edit.component'
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CardService} from './machinecards/card.service';
+import {CardResolverService} from './machinecards/card-resolver.service';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 const appRoutes: Routes = [
@@ -31,8 +34,8 @@ const appRoutes: Routes = [
   {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent},
   {path: 'kortit', component: MachinecardsComponent, children: [
       {path: '', component: MachinecardStartComponent},
-      {path: 'new', component: CardEditComponent},
-      {path: ':id', component: CardDetailComponent},
+      {path: 'new', component: CardEditComponent, resolve: [CardResolverService]},
+      {path: ':id', component: CardDetailComponent, resolve: [CardResolverService]},
       {path: 'id/edit', component: CardEditComponent}
     ]}
 
@@ -66,6 +69,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [CardService],
   bootstrap: [AppComponent]
