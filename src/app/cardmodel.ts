@@ -1,9 +1,9 @@
 export class Cardmodel {
 
-  constructor(workplaceId: number, id: number, deviceCode: string, versio: string,
-              deviceName: string, bootUp: string, article: string, mac: string, profinetIP: string,
-              subnet: string, routerIP: string, profibus: string, asi: string, mpi: string,
-              counterIn: string, counterOut: string, isActive: boolean, workplace: string) {
+  constructor(workplaceId?: number, id?: number, deviceCode?: string, versio?: string,
+              deviceName?: string, bootUp?: string, article?: string, mac?: string, profinetIP?: string,
+              subnet?: string, routerIP?: string, profibus?: string, asi?: string, mpi?: string,
+              counterIn?: string, counterOut?: string, isActive?: boolean) {
 
     this.workplaceId = workplaceId;
     this.id = id;
@@ -22,7 +22,6 @@ export class Cardmodel {
     this.counterIn = counterIn;
     this.counterOut = counterOut;
     this.isActive = isActive;
-    this.workplace = workplace;
   }
 
   public workplaceId: number;
@@ -42,5 +41,4 @@ export class Cardmodel {
   public counterIn: string;
   public counterOut: string;
   public isActive: boolean;
-  public workplace: string;
 }

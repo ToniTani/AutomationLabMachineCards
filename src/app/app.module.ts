@@ -12,10 +12,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { MachinecardListviewComponent } from './machinecard-listview/machinecard-listview.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MachinecardNotInUseListviewComponent } from './machinecard-not-in-use-listview/machinecard-not-in-use-listview/machinecard-not-in-use-listview.component';
+import { MachinecardDetailComponent } from './machinecard-detail/machinecard-detail/machinecard-detail.component';
+import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
 
+  {path: '', redirectTo: '/Machinecards', pathMatch: 'full' },
   {path: 'Machinecards', component: MachinecardListviewComponent},
+  {path: 'Machinecards/new', component: MachinecardDetailComponent},
+  {path: 'Machinecards/:id', component: MachinecardDetailComponent},
   {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent}
 
 ];
@@ -25,7 +34,8 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     MachinecardListviewComponent,
-    MachinecardNotInUseListviewComponent
+    MachinecardNotInUseListviewComponent,
+    MachinecardDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,11 @@ const appRoutes: Routes = [
     MatExpansionModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
