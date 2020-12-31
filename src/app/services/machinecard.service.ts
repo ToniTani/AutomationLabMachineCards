@@ -11,6 +11,10 @@ export class MachinecardService {
   constructor(private machinecardHttpService: MachinecardHttpService) {
   }
 
+  get(): Observable<Cardmodel[]> {
+    return this.machinecardHttpService.get();
+  }
+
   getMachinecardById(id): Observable<Cardmodel> {
     return this.machinecardHttpService.getById(id);
   }

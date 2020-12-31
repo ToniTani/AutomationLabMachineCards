@@ -15,6 +15,12 @@ export class MachinecardHttpService {
     this.url = environment.endpointUrl;
   }
 
+  get(): Observable<Cardmodel[]> {
+    return this.httpClient.get(this.url).pipe(map(response => {
+      return response as Cardmodel[];
+    }));
+  }
+
   getById(id): Observable<Cardmodel> {
     return this.httpClient.get(this.url + '/' + id).pipe(map(response => {
       return response as Cardmodel;

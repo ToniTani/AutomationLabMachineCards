@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MachinecardService} from '../services/machinecard.service';
 import {Router} from '@angular/router';
+import {HeaderOptions} from './header-options';
+import {HeaderService} from '../services/header.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  options: HeaderOptions;
 
-  constructor(private contactService: MachinecardService, private router: Router) { }
+  constructor(private router: Router, private header: HeaderService) { }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    this.header.getHeaderOptions().subscribe((options: HeaderOptions) => {
+      this.options = options;
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  onNavigateBack() {
+    this.router.navigate(['/Machinecards']);
   }
 
   // tslint:disable-next-line:typedef
