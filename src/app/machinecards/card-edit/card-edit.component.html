@@ -1,31 +1,92 @@
-<section>
+<br>
+    <h1>Kortin tiedot!</h1>
+<Section>
   <form fxLayout="column" [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="workplaceId"></label>
+      <input type="number" matInput placeholder="deviceCode" id="workplaceId" formControlName="workplaceId" class="form-control">
+    </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
       <label for="laitekoodi"></label>
       <input type="text" matInput placeholder="deviceCode" id="laitekoodi" formControlName="deviceCode" class="form-control">
     </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
       <label for="versio"></label>
-      <textarea matInput placeholder="versio" id="versio" class="form-control" formControlName="versio"></textarea>
+      <input matInput placeholder="versio" id="versio" class="form-control" formControlName="versio">
     </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
-    <label for="laitenimi"></label>
-    <textarea matInput placeholder="deviceName" id="laitenimi" class="form-control" formControlName="deviceName"></textarea>
+      <label for="laitenimi"></label>
+      <input matInput placeholder="deviceName" id="laitenimi" class="form-control" formControlName="deviceName">
     </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
       <label for="bootUp"></label>
-      <textarea matInput placeholder="bootUp" id="bootUp" class="form-control" formControlName="bootUp"></textarea>
+      <input matInput placeholder="bootUp" id="bootUp" class="form-control" formControlName="bootUp">
     </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
       <label for="artikkeli"></label>
-      <textarea matInput placeholder="article" id="artikkeli" class="form-control" formControlName="article"></textarea>
+      <input matInput placeholder="article" id="artikkeli" class="form-control" formControlName="article">
     </mat-form-field>
+
     <mat-form-field appearance="standard" color="primary">
       <label for="mac"></label>
-      <textarea matInput placeholder="mac" id="mac" class="form-control" formControlName="mac"></textarea>
+      <input matInput placeholder="mac" id="mac" class="form-control" formControlName="mac">
     </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="profinetIP"></label>
+      <input matInput placeholder="profinetIP" id="profinetIP" class="form-control" formControlName="profinetIP">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="subnet"></label>
+      <input matInput placeholder="subnet" id="subnet" class="form-control" formControlName="subnet">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="routerIP"></label>
+      <input matInput placeholder="routerIP" id="routerIp" class="form-control" formControlName="routerIP">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="profibus"></label>
+      <input matInput placeholder="profibus" id="profibus" class="form-control" formControlName="profibus">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="asi"></label>
+      <input matInput placeholder="asi" id="asi" class="form-control" formControlName="asi">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="mpi"></label>
+      <input matInput placeholder="mpi" id="mpi" class="form-control" formControlName="mpi">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="counterIn"></label>
+      <input matInput placeholder="counterIn" id="counterIn" class="form-control" formControlName="counterIn">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="counterOut"></label>
+      <input matInput placeholder="mac" id="counterOut" class="form-control" formControlName="counterOut">
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" color="primary">
+      <label for="isActive"></label>
+      <input matInput placeholder="text" id="isActive" class="form-control" formControlName="isActive">
+    </mat-form-field>
+
+
+
     <button type="submit" mat-button color="primary" [disabled]="!cardForm.valid">Tallenna</button>
     <button type="submit" mat-raised-button color="warn" (click)="onCancel()">Peruuta</button>
   </form>
-</section>
+</Section>
 <br>

@@ -37,7 +37,7 @@ const appRoutes: Routes = [
       {path: '', component: MachinecardStartComponent},
       {path: 'new', component: CardEditComponent, resolve: [CardResolverService]},
       {path: ':id', component: CardDetailComponent, resolve: [CardResolverService]},
-      {path: 'id/edit', component: CardEditComponent}
+      {path: ':id/edit', component: CardEditComponent}
     ]},
 ];
 
