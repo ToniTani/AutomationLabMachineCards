@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-machinecard-not-in-use-listview',
@@ -14,7 +15,7 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   public loadedCards: Cardmodel[] = [];
 
-  constructor(private httpCardsNotInUse: HttpClient) {
+  constructor(private httpCardsNotInUse: HttpClient, private router: Router) {
   }
 
   // tslint:disable-next-line:typedef
@@ -41,5 +42,11 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
       .subscribe(cards => {
         this.loadedCards = cards;
       });
+  }
+
+  // tslint:disable-next-line:typedef
+  editMachinecardButton(idNumber: number) {
+    this.router.navigate(['/Machinecards/' + idNumber]);
+    console.log(idNumber);
   }
 }

@@ -51,4 +51,10 @@ export class MachinecardListviewComponent implements OnInit {
         this.loadedCards = cards;
       });
   }
+
+  // tslint:disable-next-line:typedef
+  editMachinecardButton(idNumber: number) {
+    this.router.navigate(['/Machinecards/' + idNumber]);
+    console.log(idNumber);
+  }
 }

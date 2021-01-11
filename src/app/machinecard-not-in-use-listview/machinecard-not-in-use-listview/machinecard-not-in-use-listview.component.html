@@ -5,7 +5,7 @@
         <p>{{card.workplaceId}}. {{card.deviceName}}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
-
+    <button mat-button class="editButton" (click)="editMachinecardButton(card.id)">Edit</button>
     <table class="machineCardNotInUse">
       <tr>
         <th *ngFor = "let column of headers">
