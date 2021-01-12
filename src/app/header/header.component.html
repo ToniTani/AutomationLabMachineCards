@@ -1,32 +1,32 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div>
-      <button routerLink="kortit" mat-button>
+      <button *ngIf="!options.isBackEnabled" routerLink="Machinecards" mat-button>
         <span><mat-icon>developer_board</mat-icon>Konekortit</span>
       </button>
-      <button routerLink="deviceActiveFalse" mat-button>
+
+      <button *ngIf="!options.isBackEnabled" routerLink="DeviceActiveFalse" mat-button>
         <span><mat-icon>developer_board</mat-icon>Ei käytössä olevat konekortit</span>
       </button>
-      <button routerLink="machinecards" mat-button>
-        <span><mat-icon>developer_board</mat-icon>Muokkaa kortteja</span>
-      </button>
     </div>
+
+    <button *ngIf="!options.isBackEnabled" class="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button>
+      <span><mat-icon>developer_board</mat-icon>Uusi konekortti</span>
+    </button>
+
+    <button *ngIf="options.isBackEnabled" mat-icon-button (click)="onNavigateBack()">
+      <mat-icon class="arrowBack">arrow_back</mat-icon>
+    </button>
+
+    <button mat-icon-button *ngFor="let action of options?.actions" (click)="action.runAction()">
+      <i class="material-icons">{{action.icon}}</i>
+    </button>
+
+    <!--
     <div>
       <button mat-flat-button>Login
       </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-        <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="onLoadData()">
-          <mat-icon>cloud_download</mat-icon>
-          <span>Hae kortit</span>
-        </button>
-        <button mat-menu-item (click)="onSaveData()">
-          <mat-icon>save</mat-icon>
-          <span>Tallenna</span>
-        </button>
-      </mat-menu>
     </div>
+    -->
   </mat-toolbar-row>
 </mat-toolbar>

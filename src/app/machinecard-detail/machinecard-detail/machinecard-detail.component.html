@@ -1,0 +1,153 @@
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <div fxLayout="column" class="width-detail">
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.workplaceId"
+                 type="number"
+                 placeholder="Workplace ID"
+                 [readonly]="!editingEnabled"/>
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.deviceCode"
+                 type="text"
+                 placeholder="Device code"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.versio"
+                 type="text"
+                 placeholder="Versio"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.deviceName"
+                 type="text"
+                 placeholder="Device name"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.bootUp"
+                 type="text"
+                 placeholder="Boot up"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.article"
+                 type="text"
+                 placeholder="Article"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.mac"
+                 type="text"
+                 placeholder="Mac"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.profinetIP"
+                 type="text"
+                 placeholder="Profinet IP"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.subnet"
+                 type="text"
+                 placeholder="Subnet"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.routerIP"
+                 type="text"
+                 placeholder="Router IP"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.profibus"
+                 type="text"
+                 placeholder="Profibus"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.asi"
+                 type="text"
+                 placeholder="Asi"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.mpi"
+                 type="text"
+                 placeholder="Mpi"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.counterIn"
+                 type="text"
+                 placeholder="Counter in"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.counterOut"
+                 type="text"
+                 placeholder="Counter out"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>
+          <input matInput [(ngModel)]="machinecard.isActive"
+                 type="text"
+                 placeholder="Is active"
+                 [readonly]="!editingEnabled">
+        </label>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-card>
+<button mat-fab class="createButton" *ngIf="editingEnabled==true" (click)="onSave()">
+  <i class="material-icons">check</i>
+</button>

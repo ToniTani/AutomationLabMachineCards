@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {DataStorageService} from '../machinecards/data-storage.service';
+import {Router} from '@angular/router';
+import {HeaderOptions} from './header-options';
+import {HeaderService} from '../services/header.service';
 
 @Component({
   selector: 'app-header',
@@ -7,18 +9,24 @@ import {DataStorageService} from '../machinecards/data-storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  options: HeaderOptions;
 
-  constructor(private dataStorageService: DataStorageService) { }
+  constructor(private router: Router, private header: HeaderService) { }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    this.header.getHeaderOptions().subscribe((options: HeaderOptions) => {
+      this.options = options;
+    });
   }
 
-  onSaveData() {
-    this.dataStorageService.storeCards(); {
-    }
+  // tslint:disable-next-line:typedef
+  onNavigateBack() {
+    this.router.navigate(['/Machinecards']);
   }
 
-  onLoadData() {
-    this.dataStorageService.loadCards().subscribe();
+  // tslint:disable-next-line:typedef
+  createNewMachineCard() {
+    this.router.navigate(['/Machinecards/new']);
   }
 }
