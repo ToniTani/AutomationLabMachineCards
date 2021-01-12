@@ -37,4 +37,5 @@ export class CardService {
     this.machinecards.splice(index, 1);
     this.cardsChanged.next(this.machinecards.slice());
   }
+
 }
