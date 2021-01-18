@@ -15,6 +15,7 @@ import {HeaderService} from '../services/header.service';
 export class MachinecardListviewComponent implements OnInit {
   headers = ['Key', 'Value'];
   public loadedCards: Cardmodel[] = [];
+  machinecard: Cardmodel;
 
   constructor(private http: HttpClient, private router: Router, private  activatedRoute: ActivatedRoute,
               private machinecardService: MachinecardService, private header: HeaderService) {
@@ -56,5 +57,12 @@ export class MachinecardListviewComponent implements OnInit {
   editMachinecardButton(idNumber: number) {
     this.router.navigate(['/Machinecards/' + idNumber]);
     console.log(idNumber);
+  }
+
+  // tslint:disable-next-line:typedef
+  setIsActiveValueFalse(idNumber: number) {
+    this.machinecardService.setIsActiveFalseService(idNumber).subscribe(() => {
+      window.location.reload();
+    });
   }
 }

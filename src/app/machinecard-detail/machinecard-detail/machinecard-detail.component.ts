@@ -56,6 +56,15 @@ export class MachinecardDetailComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
+  onDelete() {
+    this.editingEnabled = false;
+    this.machinecardService.deleteMachinecard(this.machinecard).subscribe(() => {
+      this.router.navigate(['/Machinecards']);
+      this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
+    });
+  }
+
+  // tslint:disable-next-line:typedef
   onSave() {
     console.log('Save:' + this.machinecardId);
     if (isNaN(this.machinecardId)) {
@@ -72,5 +81,13 @@ export class MachinecardDetailComponent implements OnInit {
         this.snackBar.open('Konekortti muokattu', 'OK', {duration: 3000});
       });
     }
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteMachinecard() {
+    this.machinecardService.deleteMachinecard(this.machinecard).subscribe(() => {
+      this.router.navigate(['/Machinecards']);
+      this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
+    });
   }
 }

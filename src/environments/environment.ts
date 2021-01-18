@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  endpointUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device'
+  endpointUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device',
+  removeMachineCardUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device/DeviceActiveFalse'
 };
 
 /*

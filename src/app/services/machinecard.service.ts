@@ -19,11 +19,23 @@ export class MachinecardService {
     return this.machinecardHttpService.getById(id);
   }
 
-  createMachinecard(contact): Observable<Cardmodel> {
-    return this.machinecardHttpService.post(contact);
+  createMachinecard(machinecard): Observable<Cardmodel> {
+    return this.machinecardHttpService.post(machinecard);
   }
 
-  updateMachinecard(contact): Observable<Cardmodel> {
-    return this.machinecardHttpService.put(contact);
+  updateMachinecard(machinecard): Observable<Cardmodel> {
+    return this.machinecardHttpService.put(machinecard);
+  }
+
+  deleteMachinecard(machinecard): Observable<any> {
+    return this.machinecardHttpService.delete(machinecard);
+  }
+
+  setIsActiveFalseService(idNumber: number): Observable<any> {
+    return this.machinecardHttpService.setIsActiveFalseHttpService(idNumber);
+  }
+
+  setIsActiveTrueService(idNumber: number): Observable<any> {
+    return this.machinecardHttpService.setIsActiveTrueHttpService(idNumber);
   }
 }

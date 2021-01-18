@@ -6,6 +6,13 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <button mat-button class="editButton" (click)="editMachinecardButton(card.id)">Edit</button>
+    <br>
+    <br>
+
+    <button mat-button class="setIsActiveValueFalse" (click)="setIsActiveValueFalse(card.id)">Poista konekortti käytöstä</button>
+    <br>
+    <br>
+
     <table class="machineCard">
       <tr>
         <th *ngFor = "let column of headers">
