@@ -1,32 +1,31 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-  <mat-toolbar-row fxLayoutAlign="space-between center">
-    <div>
+
+    <div fxFlex fxLayout fxLayoutAlign="flex-start" fxLayoutGap="10px" >
       <button *ngIf="!options.isBackEnabled" routerLink="Machinecards" mat-button>
         <span><mat-icon>developer_board</mat-icon>Konekortit</span>
       </button>
 
-      <button *ngIf="!options.isBackEnabled" routerLink="DeviceActiveFalse" mat-button>
-        <span><mat-icon>developer_board</mat-icon>Ei käytössä olevat konekortit</span>
+      <button *ngIf="!options.isBackEnabled" routerLink="DeviceActiveFalse" mat-button fxHide.xs>
+        <span><mat-icon>restore_from_trash</mat-icon>Palauta roskakorista</span>
+      </button>
+
+
+      <button *ngIf="options.isBackEnabled" mat-icon-button (click)="onNavigateBack()">
+        <mat-icon class="arrowBack">arrow_back</mat-icon>
       </button>
     </div>
 
-    <button *ngIf="!options.isBackEnabled" class="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button>
-      <span><mat-icon>developer_board</mat-icon>Uusi konekortti</span>
-    </button>
-
-    <button *ngIf="options.isBackEnabled" mat-icon-button (click)="onNavigateBack()">
-      <mat-icon class="arrowBack">arrow_back</mat-icon>
+    <button *ngIf="!options.isBackEnabled" routerLink="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button>
+      <span><mat-icon>add_comment</mat-icon>Uusi konekortti</span>
     </button>
 
     <button mat-icon-button *ngFor="let action of options?.actions" (click)="action.runAction()">
       <i class="material-icons">{{action.icon}}</i>
     </button>
-
     <!--
     <div>
       <button mat-flat-button>Login
       </button>
     </div>
     -->
-  </mat-toolbar-row>
 </mat-toolbar>
