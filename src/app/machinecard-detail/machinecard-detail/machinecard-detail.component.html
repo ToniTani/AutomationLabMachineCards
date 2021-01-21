@@ -2,7 +2,6 @@
 <mat-card>
   <div fxLayout="row" fxLayoutAlign="center start">
     <div fxLayout="column" class="width-detail">
-
       <mat-form-field>
         <label>
           <input matInput [(ngModel)]="machinecard.workplaceId"
@@ -17,8 +16,11 @@
           <input matInput [(ngModel)]="machinecard.deviceCode"
                  type="text"
                  placeholder="Device code"
+                 required
+                 #deviceCodeInput="ngModel"
                  [readonly]="!editingEnabled">
         </label>
+        <mat-error *ngIf="deviceCodeInput.invalid">Pakollinen tieto!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -35,8 +37,11 @@
           <input matInput [(ngModel)]="machinecard.deviceName"
                  type="text"
                  placeholder="Device name"
+                 required
+                 #deviceNameInput="ngModel"
                  [readonly]="!editingEnabled">
         </label>
+        <mat-error *ngIf="deviceNameInput.invalid">Pakollinen tieto!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -140,6 +145,7 @@
     </div>
   </div>
 </mat-card>
-<button mat-fab class="createButton" *ngIf="editingEnabled==true" (click)="onSave()">
+<button [disabled]="deviceNameInput.invalid" mat-fab class="createButton" *ngIf="editingEnabled==true" (click)="onSave()">
   <i class="material-icons">check</i>
 </button>
+
