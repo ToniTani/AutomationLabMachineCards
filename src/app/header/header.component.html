@@ -15,17 +15,27 @@
       </button>
     </div>
 
-    <button *ngIf="!options.isBackEnabled" routerLink="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button>
+  <button *ngIf="!options.isBackEnabled" routerLink="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button fxHide.xs>
       <span><mat-icon>add_comment</mat-icon>Uusi konekortti</span>
-    </button>
+  </button>
 
-    <button mat-icon-button *ngFor="let action of options?.actions" (click)="action.runAction()">
-      <i class="material-icons">{{action.icon}}</i>
+  <button *ngIf="!options.isBackEnabled" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-button fxHide.gt-xs>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="createNewMachineCard()">
+      <mat-icon>add_comment</mat-icon>
+      <span>Uusi konekortti</span>
     </button>
-    <!--
-    <div>
-      <button mat-flat-button>Login
-      </button>
-    </div>
-    -->
+    <button mat-menu-item routerLink="DeviceActiveFalse">
+      <mat-icon>restore_from_trash</mat-icon>
+      <span>Palauta roskakorista</span>
+    </button>
+  </mat-menu>
+
+  <button mat-icon-button *ngFor="let action of options?.actions" (click)="action.runAction()">
+    <i class="material-icons">{{action.icon}}</i>
+  </button>
+
+
 </mat-toolbar>
