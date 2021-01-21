@@ -27,8 +27,8 @@ export class MachinecardService {
     return this.machinecardHttpService.put(machinecard);
   }
 
-  deleteMachinecard(machinecard): Observable<any> {
-    return this.machinecardHttpService.delete(machinecard);
+  deleteMachinecard(idNumber: number): Observable<any> {
+    return this.machinecardHttpService.delete(idNumber);
   }
 
   setIsActiveFalseService(idNumber: number): Observable<any> {

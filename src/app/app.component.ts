@@ -14,6 +14,6 @@ export class AppComponent {
     iconRegistry.addSvgIcon(
       'playing-cards',
       sanitizer.bypassSecurityTrustResourceUrl('assets/playing-cards.svg')
-    )
+    );
   }
 }

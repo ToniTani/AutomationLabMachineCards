@@ -37,3 +37,11 @@
   background-color: #7705cc;
   color: white;
 }
+
+.deleteMachinecard {
+  position: absolute;
+  right: 6.9%;
+  top: 8.1%;
+  background-color: red;
+  color: white;
+}

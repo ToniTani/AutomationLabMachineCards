@@ -56,9 +56,9 @@ export class MachinecardDetailComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  onDelete() {
+  onDelete(idNumber: number) {
     this.editingEnabled = false;
-    this.machinecardService.deleteMachinecard(this.machinecard).subscribe(() => {
+    this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
       this.router.navigate(['/Machinecards']);
       this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
     });
@@ -81,13 +81,5 @@ export class MachinecardDetailComponent implements OnInit {
         this.snackBar.open('Konekortti muokattu', 'OK', {duration: 3000});
       });
     }
-  }
-
-  // tslint:disable-next-line:typedef
-  deleteMachinecard() {
-    this.machinecardService.deleteMachinecard(this.machinecard).subscribe(() => {
-      this.router.navigate(['/Machinecards']);
-      this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
-    });
   }
 }

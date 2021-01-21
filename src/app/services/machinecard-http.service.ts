@@ -43,8 +43,8 @@ export class MachinecardHttpService {
   }
 
   // The code below will delete a machinecard permanently.
-  delete(machinecard): Observable<any> {
-    return this.httpClient.delete(this.removeMachineCardUrl + '/' + machinecard.id);
+  delete(idNumber: number): Observable<any> {
+    return this.httpClient.delete(this.removeMachineCardUrl + '/' + idNumber);
   }
 
   // The function below does not delete a machinecard. What it does it sets machinecard's isActive value false.

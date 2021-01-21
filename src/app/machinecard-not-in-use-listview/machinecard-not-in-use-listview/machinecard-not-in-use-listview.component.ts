@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {MachinecardService} from '../../services/machinecard.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-machinecard-not-in-use-listview',
@@ -15,8 +16,10 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
   headers = ['Key', 'Value'];
 
   public loadedCards: Cardmodel[] = [];
+  machinecard: Cardmodel;
 
-  constructor(private httpCardsNotInUse: HttpClient, private router: Router, private machinecardService: MachinecardService) {
+  constructor(private httpCardsNotInUse: HttpClient, private router: Router,
+              private machinecardService: MachinecardService, public snackBar: MatSnackBar) {
   }
 
   // tslint:disable-next-line:typedef
@@ -54,6 +57,13 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
   // tslint:disable-next-line:typedef
   setIsActiveValueTrue(idNumber: number) {
     this.machinecardService.setIsActiveTrueService(idNumber).subscribe(() => {
+      window.location.reload();
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  deleteMachinecard(idNumber: number) {
+    this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
       window.location.reload();
     });
   }
