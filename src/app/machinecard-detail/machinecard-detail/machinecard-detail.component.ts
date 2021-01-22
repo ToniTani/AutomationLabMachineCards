@@ -16,6 +16,7 @@ export class MachinecardDetailComponent implements OnInit {
   machinecard: Cardmodel;
   machinecardId: number;
   editingEnabled: boolean;
+  isLoading = false;
 
   constructor(private router: Router, private  route: ActivatedRoute,
               private machinecardService: MachinecardService, public snackBar: MatSnackBar, private header: HeaderService) {
@@ -28,6 +29,7 @@ export class MachinecardDetailComponent implements OnInit {
     this.machinecardId = this.route.snapshot.params.id;
     console.log(this.machinecardId);
     let headerAction: HeaderAction[];
+    this.isLoading = true;
 
     if (isNaN(this.machinecardId)) {
       this.editingEnabled = true;
@@ -38,6 +40,7 @@ export class MachinecardDetailComponent implements OnInit {
         this.machinecard = response;
       });
     }
+    this.isLoading = false;
     this.header.setToolbarOptions(new HeaderOptions(true, headerAction));
   }
 
@@ -57,7 +60,6 @@ export class MachinecardDetailComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onDelete(idNumber: number) {
-    this.editingEnabled = false;
     this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
       this.router.navigate(['/Machinecards']);
       this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
@@ -66,19 +68,23 @@ export class MachinecardDetailComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   onSave() {
+    this.isLoading = true;
     console.log('Save:' + this.machinecardId);
     if (isNaN(this.machinecardId)) {
       this.machinecardService.createMachinecard(this.machinecard).subscribe(response => {
         console.log(response);
         this.router.navigate(['/Machinecards']);
         this.snackBar.open('Konekortti luotu', 'OK', {duration: 3000});
+        this.isLoading = false;
       });
     } else {
+      this.isLoading = true;
       this.machinecardService.updateMachinecard(this.machinecard).subscribe(response => {
         this.machinecard = response;
         this.editingEnabled = false;
         this.router.navigate(['/Machinecards']);
         this.snackBar.open('Konekortti muokattu', 'OK', {duration: 3000});
+        this.isLoading = false;
       });
     }
   }

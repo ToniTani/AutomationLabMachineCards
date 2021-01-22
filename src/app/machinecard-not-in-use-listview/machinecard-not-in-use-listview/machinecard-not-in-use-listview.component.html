@@ -1,7 +1,8 @@
 <br>
 <mat-accordion>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
   <mat-expansion-panel *ngFor="let card of loadedCards">
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header *ngIf="!isLoading">
       <mat-panel-description>
         <p>{{card.workplaceId}}. {{card.deviceName}}</p>
       </mat-panel-description>

@@ -45,3 +45,6 @@
   background-color: red;
   color: white;
 }
+mat-spinner {
+  margin: auto;
+}

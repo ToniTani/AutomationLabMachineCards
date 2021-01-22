@@ -17,6 +17,7 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   public loadedCards: Cardmodel[] = [];
   machinecard: Cardmodel;
+  isLoading = false;
 
   constructor(private httpCardsNotInUse: HttpClient, private router: Router,
               private machinecardService: MachinecardService, public snackBar: MatSnackBar) {
@@ -29,6 +30,7 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   private fetchCardsNotInUse() {
+    this.isLoading = true;
     this.httpCardsNotInUse
       .get<{ [key: string]: Cardmodel }>(
         'https://automation-laboratory-backend.azurewebsites.net/api/device/DeviceActiveFalse')
@@ -45,11 +47,13 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
       )
       .subscribe(cards => {
         this.loadedCards = cards;
+        this.isLoading = false;
       });
   }
 
   // tslint:disable-next-line:typedef
   editMachinecardButton(idNumber: number) {
+    this.isLoading = true;
     this.router.navigate(['/Machinecards/' + idNumber]);
     console.log(idNumber);
   }
@@ -63,8 +67,11 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   deleteMachinecard(idNumber: number) {
+    this.isLoading = true;
     this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
       window.location.reload();
+      this.isLoading = false;
+      //this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
     });
   }
 }

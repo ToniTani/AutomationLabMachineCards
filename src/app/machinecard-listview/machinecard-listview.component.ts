@@ -16,6 +16,7 @@ export class MachinecardListviewComponent implements OnInit {
   headers = ['Key', 'Value'];
   public loadedCards: Cardmodel[] = [];
   machinecard: Cardmodel;
+  isLoading = false;
 
   constructor(private http: HttpClient, private router: Router, private  activatedRoute: ActivatedRoute,
               private machinecardService: MachinecardService, private header: HeaderService) {
@@ -34,6 +35,7 @@ export class MachinecardListviewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   private fetchCards() {
+    this.isLoading = true;
     this.http
       .get<{ [key: string]: Cardmodel }>(
         'https://automation-laboratory-backend.azurewebsites.net/api/device')
@@ -50,6 +52,7 @@ export class MachinecardListviewComponent implements OnInit {
       )
       .subscribe(cards => {
         this.loadedCards = cards;
+        this.isLoading = false;
       });
   }
 

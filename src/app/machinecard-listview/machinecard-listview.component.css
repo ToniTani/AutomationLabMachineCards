@@ -37,3 +37,6 @@
   background-color: #7705cc;
   color: white;
 }
+mat-spinner {
+  margin: auto;
+}
