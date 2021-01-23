@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {MachinecardService} from '../../services/machinecard.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ConfirmDialogService} from '../../services/confirm-dialog.service';
 
 @Component({
   selector: 'app-machinecard-not-in-use-listview',
@@ -20,7 +21,8 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
   isLoading = false;
 
   constructor(private httpCardsNotInUse: HttpClient, private router: Router,
-              private machinecardService: MachinecardService, public snackBar: MatSnackBar) {
+              private machinecardService: MachinecardService, public snackBar: MatSnackBar,
+              private confirmDialogService: ConfirmDialogService) {
   }
 
   // tslint:disable-next-line:typedef
@@ -65,13 +67,23 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
     });
   }
 
+  // This will delete a certain machinecard permanently.
   // tslint:disable-next-line:typedef
   deleteMachinecard(idNumber: number) {
     this.isLoading = true;
     this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
       window.location.reload();
       this.isLoading = false;
-      //this.snackBar.open('Konekortti poistettu', 'OK', {duration: 3000});
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  showDialog(idNumber: number) {
+    this.confirmDialogService.confirmThis('Haluatko varmasti poistaa konekortin pysyvästi?', () => {
+      this.deleteMachinecard(idNumber);
+      console.log('Yes clicked. Machinecard has been deleted permanently.');
+    }, () => {
+      console.log('No clicked. Delete canceled.');
     });
   }
 }

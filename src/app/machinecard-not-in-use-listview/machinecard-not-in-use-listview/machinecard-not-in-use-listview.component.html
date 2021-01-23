@@ -11,11 +11,12 @@
     <br>
     <br>
 
-    <button mat-button class="deleteMachinecard" (click)="deleteMachinecard(card.id)">Poista konekortti</button>
-
     <button mat-button class="setIsActiveValueTrue" (click)="setIsActiveValueTrue(card.id)">Ota konekortti käyttöön</button>
     <br>
     <br>
+
+    <button mat-button class="showDialog" (click)="showDialog(card.id)">Poista</button>
+
     <table class="machineCardNotInUse">
       <tr>
         <th *ngFor = "let column of headers">
@@ -161,3 +162,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 <br>
+<app-confirm-dialog></app-confirm-dialog>

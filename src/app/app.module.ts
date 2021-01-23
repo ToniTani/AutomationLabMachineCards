@@ -20,6 +20,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog/confirm-dialog.component';
 
 const appRoutes: Routes = [
 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     MachinecardListviewComponent,
     MachinecardNotInUseListviewComponent,
-    MachinecardDetailComponent
+    MachinecardDetailComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

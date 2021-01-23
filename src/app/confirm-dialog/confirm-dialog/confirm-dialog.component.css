@@ -1,0 +1,47 @@
+.custom-alert {
+  width: 300px;
+}
+
+.modal-backdrop.in {
+  opacity: 0.9;
+}
+
+.modal-body {
+  background-color: whitesmoke;
+  border-radius: 11px;
+}
+
+.modal {
+  background-color: rgba(58, 51, 51, 0.4);
+  padding-top: 5px;
+}
+
+.confirm-message {
+  font-family: 'Helvetica', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.btn-no {
+  position: absolute;
+  right: 5%;
+  width: 40%;
+  background-color: #7705cc;
+  color: white;
+}
+
+.btn-yes {
+  width: 40%;
+  background-color: red;
+  color: white;
+}
+
+@media screen and (max-width: 640px) {
+  .custom-alert {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+  }
+}
