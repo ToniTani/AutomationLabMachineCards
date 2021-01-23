@@ -1,5 +1,7 @@
 .custom-alert {
   width: 300px;
+  margin: auto;
+  top: 40%;
 }
 
 .modal-backdrop.in {
@@ -40,8 +42,7 @@
 
 @media screen and (max-width: 640px) {
   .custom-alert {
-    position: absolute;
+    margin: auto;
     top: 40%;
-    left: 8%;
   }
 }
