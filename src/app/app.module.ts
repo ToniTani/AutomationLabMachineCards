@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,14 +21,19 @@ import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog/confirm-dialog.component';
+import { AuthComponent } from './auth/auth.component';
+import {MachinecardService} from './services/machinecard.service';
+import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import {AuthGuard} from './auth/auth.guard';
 
 const appRoutes: Routes = [
 
   {path: '', redirectTo: '/Machinecards', pathMatch: 'full' },
+  {path: 'login', component: AuthComponent },
   {path: 'Machinecards', component: MachinecardListviewComponent},
-  {path: 'Machinecards/new', component: MachinecardDetailComponent},
-  {path: 'Machinecards/:id', component: MachinecardDetailComponent},
-  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent}
+  {path: 'Machinecards/new', component: MachinecardDetailComponent, canActivate: [AuthGuard]},
+  {path: 'Machinecards/:id', component: MachinecardDetailComponent, canActivate: [AuthGuard]},
+  {path: 'DeviceActiveFalse', component: MachinecardNotInUseListviewComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -38,7 +43,8 @@ const appRoutes: Routes = [
     MachinecardListviewComponent,
     MachinecardNotInUseListviewComponent,
     MachinecardDetailComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,7 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [MachinecardService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

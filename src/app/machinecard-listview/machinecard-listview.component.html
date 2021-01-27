@@ -7,14 +7,10 @@
         <p>{{card.workplaceId}}. {{card.deviceName}}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <button mat-button class="editButton" (click)="editMachinecardButton(card.id)">Edit</button>
-    <br>
-    <br>
-
-    <button mat-button class="setIsActiveValueFalse" (click)="setIsActiveValueFalse(card.id)">Poista käytöstä</button>
-    <br>
-    <br>
-
+    <mat-action-row *ngIf="isAuthenticated" fxFlex fxLayout fxLayoutAlign="flex-start" fxLayoutGap="10px">
+    <button mat-raised-button color="primary" *ngIf="isAuthenticated" (click)="editMachinecardButton(card.id)">MUOKKAA</button>
+    <button mat-raised-button color="warn" *ngIf="isAuthenticated" (click)="setIsActiveValueFalse(card.id)">POISTA KÄYTÖSTÄ</button>
+    </mat-action-row>
     <table class="machineCard">
       <tr>
         <th *ngFor = "let column of headers">

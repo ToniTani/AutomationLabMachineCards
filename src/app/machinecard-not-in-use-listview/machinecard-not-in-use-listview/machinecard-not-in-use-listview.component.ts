@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Cardmodel} from '../../cardmodel';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {MachinecardService} from '../../services/machinecard.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ConfirmDialogService} from '../../services/confirm-dialog.service';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-machinecard-not-in-use-listview',
@@ -22,12 +23,19 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   constructor(private httpCardsNotInUse: HttpClient, private router: Router,
               private machinecardService: MachinecardService, public snackBar: MatSnackBar,
-              private confirmDialogService: ConfirmDialogService) {
+              private confirmDialogService: ConfirmDialogService, authService: AuthService,
+              private activatedRoute: ActivatedRoute) {
   }
 
   // tslint:disable-next-line:typedef
   ngOnInit(){
     this.fetchCardsNotInUse();
+    this.activatedRoute.queryParamMap.subscribe((paramMap: ParamMap) => {
+      const refresh = paramMap.get('refresh');
+      if (refresh) {
+        this.fetchCardsNotInUse();
+        }
+      });
   }
 
   // tslint:disable-next-line:typedef
@@ -62,8 +70,11 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   setIsActiveValueTrue(idNumber: number) {
+    this.isLoading = true;
     this.machinecardService.setIsActiveTrueService(idNumber).subscribe(() => {
-      window.location.reload();
+      this.router.navigate(['/DeviceActiveFalse'], {
+        queryParams: {refresh: new Date().getTime()} // refresh query parameter that contains a timestamp of the current time. Router behavior stays untouched but URL changes
+      });
     });
   }
 
@@ -72,8 +83,9 @@ export class MachinecardNotInUseListviewComponent implements OnInit {
   deleteMachinecard(idNumber: number) {
     this.isLoading = true;
     this.machinecardService.deleteMachinecard(idNumber).subscribe(() => {
-      window.location.reload();
-      this.isLoading = false;
+      this.router.navigate(['/DeviceActiveFalse'], {
+        queryParams: {refresh: new Date().getTime()} // refresh query parameter that contains a timestamp of the current time. Router behavior stays untouched but URL changes
+      });
     });
   }
 

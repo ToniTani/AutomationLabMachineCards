@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   endpointUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device',
-  removeMachineCardUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device/DeviceActiveFalse'
+  removeMachineCardUrl: 'https://automation-laboratory-backend.azurewebsites.net/api/device/DeviceActiveFalse',
+  firebaseAPI: 'AIzaSyDJsqqB8E1nZ-KYlLvrifnWrxzbGRqISzs'
 };
 
 /*

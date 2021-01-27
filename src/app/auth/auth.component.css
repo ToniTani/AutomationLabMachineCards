@@ -1,0 +1,13 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.card{
+  position: relative;
+  margin: 5% auto auto auto;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: #000000; inset: 2px 1px 10px -5px
+}
+.card-header {
+  border-radius: 10px;
+  text-align: center;
+}

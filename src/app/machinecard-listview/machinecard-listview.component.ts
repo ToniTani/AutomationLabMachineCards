@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MachinecardService} from '../services/machinecard.service';
 import {HeaderOptions} from '../header/header-options';
 import {HeaderService} from '../services/header.service';
+import {AuthService} from '../auth/auth.service';
 
 @Component({
   selector: 'app-machinecard-listview',
@@ -17,15 +18,18 @@ export class MachinecardListviewComponent implements OnInit {
   public loadedCards: Cardmodel[] = [];
   machinecard: Cardmodel;
   isLoading = false;
+  isAuthenticated = false;
+  loggedInUser: string;
+  isLoggedIn: boolean;
 
   constructor(private http: HttpClient, private router: Router, private  activatedRoute: ActivatedRoute,
-              private machinecardService: MachinecardService, private header: HeaderService) {
+              private machinecardService: MachinecardService, private header: HeaderService, private authService: AuthService) {
   }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
+    this.userSub();
     this.fetchCards();
-
     this.machinecardService.get().subscribe(response => {
       this.loadedCards = response;
       console.log(response);
@@ -58,6 +62,7 @@ export class MachinecardListviewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   editMachinecardButton(idNumber: number) {
+   // this.isAuthenticated = true;
     this.router.navigate(['/Machinecards/' + idNumber]);
     console.log(idNumber);
   }
@@ -65,7 +70,23 @@ export class MachinecardListviewComponent implements OnInit {
   // tslint:disable-next-line:typedef
   setIsActiveValueFalse(idNumber: number) {
     this.machinecardService.setIsActiveFalseService(idNumber).subscribe(() => {
-      window.location.reload();
+     //window.location.reload();
+      this.router.navigate(['/DeviceActiveFalse']);
+    });
+  }
+  userSub() {
+    this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+      console.log(!user);
+      console.log(!!user);
+      {
+        if (user) {
+          this.isLoggedIn = true;
+          this.loggedInUser = user.email;
+        } else {
+          this.isLoggedIn = false;
+        }
+      }
     });
   }
 }

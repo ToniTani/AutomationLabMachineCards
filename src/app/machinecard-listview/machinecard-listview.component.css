@@ -28,15 +28,9 @@
   color: white;
 }
 
-.editButton {
-  background-color: #7705cc;
-  color: white;
-}
-
-.setIsActiveValueFalse {
-  background-color: #7705cc;
-  color: white;
-}
 mat-spinner {
   margin: auto;
+}
+.mat-action-row {
+  place-content: space-between;
 }

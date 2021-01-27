@@ -2,11 +2,11 @@
 
     <div fxFlex fxLayout fxLayoutAlign="flex-start" fxLayoutGap="10px" >
       <button *ngIf="!options.isBackEnabled" routerLink="Machinecards" mat-button>
-        <span><mat-icon svgIcon="playing-cards"></mat-icon>Konekortit</span>
+        <span><mat-icon svgIcon="playing-cards"></mat-icon> Konekortit</span>
       </button>
 
-      <button *ngIf="!options.isBackEnabled" routerLink="DeviceActiveFalse" mat-button fxHide.xs>
-        <span><mat-icon>restore_from_trash</mat-icon>Palauta roskakorista</span>
+      <button *ngIf="!options.isBackEnabled && isAuthenticated" routerLink="DeviceActiveFalse" mat-button fxHide.xs>
+        <span><mat-icon>restore_from_trash</mat-icon> Palauta roskakorista</span>
       </button>
 
 
@@ -15,14 +15,31 @@
       </button>
     </div>
 
-  <button *ngIf="!options.isBackEnabled" routerLink="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button fxHide.xs>
-      <span><mat-icon>add_comment</mat-icon>Uusi konekortti</span>
-  </button>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap="10px" >
 
-  <button *ngIf="!options.isBackEnabled" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-button fxHide.gt-xs>
+    <button *ngIf="isAuthenticated" mat-button fxHide.xs>
+      <span><mat-icon svgIcon="robot"></mat-icon> {{loggedInUser}}</span>
+    </button>
+
+    <button mat-raised-button *ngIf="!options.isBackEnabled && !isAuthenticated" routerLink="/login">
+      <span><mat-icon svgIcon="robot"></mat-icon> Login</span>
+    </button>
+
+    <button *ngIf="!options.isBackEnabled && isAuthenticated" routerLink="createNewMachineCardButton" (click)="createNewMachineCard()" mat-button fxHide.xs>
+      <span><mat-icon>add_comment</mat-icon> Uusi konekortti</span>
+    </button>
+
+    <button mat-raised-button *ngIf="!options.isBackEnabled && isAuthenticated" (click)="onLogout()" routerLink="/Machincards" mat-button fxHide.xs>Logout
+    </button>
+
+  <button *ngIf="!options.isBackEnabled && isAuthenticated" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" mat-button fxHide.gt-xs>
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngIf="isAuthenticated" routerLink="/Machinecards">
+      <mat-icon svgIcon="robot"></mat-icon>
+      <span>{{loggedInUser}}</span>
+    </button>
     <button mat-menu-item (click)="createNewMachineCard()">
       <mat-icon>add_comment</mat-icon>
       <span>Uusi konekortti</span>
@@ -31,7 +48,12 @@
       <mat-icon>restore_from_trash</mat-icon>
       <span>Palauta roskakorista</span>
     </button>
+    <button mat-menu-item *ngIf="isAuthenticated" (click)="onLogout()" routerLink="/Machinecards">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Kirjaudu ulos</span>
+    </button>
   </mat-menu>
+  </div>
 
   <button mat-icon-button *ngFor="let action of options?.actions" (click)="action.runAction()">
     <i class="material-icons">{{action.icon}}</i>

@@ -7,15 +7,15 @@
         <p>{{card.workplaceId}}. {{card.deviceName}}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <button mat-button class="editButton" (click)="editMachinecardButton(card.id)">Edit</button>
+    <button mat-button class="editButton" (click)="editMachinecardButton(card.id)">MUOKKAA</button>
     <br>
     <br>
 
-    <button mat-button class="setIsActiveValueTrue" (click)="setIsActiveValueTrue(card.id)">Ota konekortti käyttöön</button>
+    <button mat-button class="setIsActiveValueTrue" (click)="setIsActiveValueTrue(card.id)">OTA TAKAISIN KÄYTTÖÖN</button>
     <br>
     <br>
 
-    <button mat-button class="showDialog" (click)="showDialog(card.id)">Poista</button>
+    <button mat-button class="showDialog" (click)="showDialog(card.id)">POISTA</button>
 
     <table class="machineCardNotInUse">
       <tr>
